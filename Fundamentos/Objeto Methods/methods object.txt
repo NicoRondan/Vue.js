@@ -1,0 +1,17 @@
+<div id="app">
+  {{ showTitle() }}
+</div>
+
+
+new Vue({
+	el: '#app',
+  data: {
+  	title: 'Hello World with Vue'
+  },
+  methods: {
+  	showTitle: function() {
+    	return 'Hello World From Methods';
+    }
+  }
+ 	
+});

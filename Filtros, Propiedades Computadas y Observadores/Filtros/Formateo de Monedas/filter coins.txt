@@ -1,0 +1,36 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.js"></script>
+<div id="app">
+   <table>
+     <thead>
+       <tr>
+         <th>Item</th>
+         <th>Price</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr v-for='item in inventory'>
+         <td>{{item.name}}</td>
+         <td>{{item.price | coin}}</td>
+       </tr>
+     </tbody>
+   </table>
+</div>
+
+
+Vue.filter('coin', function(value) {
+	return accounting.formatMoney(value);
+});
+
+
+new Vue({
+	el: "#app",
+  data: {
+  	inventory: [
+    	{name: 'Galaxy', price: '250'},
+      {name: 'iPhone', price: '450'},
+      {name: 'iPad', price: '389.50'},
+      {name: 'Laptop Gamer', price: '665.99'}
+    ]
+  }
+  
+});

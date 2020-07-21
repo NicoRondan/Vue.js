@@ -1,0 +1,22 @@
+<div id="app">
+ <input type="text" v-model="initialCont" @keyup.enter="changeCont">
+ <button @click="incrementCont">Add +1</button>
+ <p>{{ cont }}</p>
+</div>
+
+
+new Vue({
+	el: '#app',
+  data: {
+    cont: 1,
+    initialCont: 0
+  },
+  methods: {
+    incrementCont: function() {
+    	this.cont++;
+    },
+    changeCont: function() {
+    	this.cont = this.initialCont;
+    }
+  }
+});

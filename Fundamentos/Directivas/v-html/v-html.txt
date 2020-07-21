@@ -1,0 +1,24 @@
+<div id="app">
+ <h1 v-once> {{ title }} </h1>
+ <p> {{ showTitle() }} </p>
+ <p v-html="linkHTML"></p>
+</div>
+
+
+
+new Vue({
+	el: '#app',
+  data: {
+  	title: 'Hello World with Vue',
+    linkHTML: '<a href="https://google.com">Google Link</a>'
+  },
+  methods: {
+  	showTitle: function() {
+    	this.title = 'Hello World From Methods'
+    	return this.title;
+    }
+  }
+ 	
+});
+
+//v-html. Renderiza etiquetas html.

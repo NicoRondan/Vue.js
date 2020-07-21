@@ -1,0 +1,16 @@
+<div id="app">
+  <div v-show="itsMorning">
+    Hello, I'm Ghost! Booo!!
+  </div>
+</div>
+
+new Vue({
+	el: '#app',
+  computed: {
+  itsMorning() {
+  	return new Date().getHours() < 7;
+  }
+  }
+});
+
+//v-show. directiva del tipo condicional. Permite visualizar datos siempre y cuando una condicion sea verdadera.

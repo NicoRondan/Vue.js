@@ -1,0 +1,20 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.js"></script>
+
+<div id="app">
+  The French Revolution was in: {{ dateFrenchRev | date }}    
+</div>
+
+
+
+Vue.filter('date', function(date) {
+	return moment(date).format('LLL');
+});
+
+
+new Vue({
+	el: "#app",
+  data: {
+  	dateFrenchRev: '1789-05-05 17h'
+  }
+  
+});

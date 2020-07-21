@@ -1,0 +1,4 @@
+Accounting.js Docs: http://openexchangerates.github.io/accounting.js/
+
+Accounting.js CDN: https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.js
+

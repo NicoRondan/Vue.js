@@ -1,0 +1,21 @@
+<div id="app">
+ <h1 v-once> {{ title }} </h1>
+ <p> {{ showTitle() }} </p>
+</div>
+
+
+new Vue({
+	el: '#app',
+  data: {
+  	title: 'Hello World with Vue'
+  },
+  methods: {
+  	showTitle: function() {
+    	this.title = 'Hello World From Methods'
+    	return this.title;
+    }
+  }
+ 	
+});
+
+//v-once evitar doble renderizado.

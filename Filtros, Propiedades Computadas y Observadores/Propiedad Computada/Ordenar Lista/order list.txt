@@ -1,0 +1,37 @@
+
+<div id="app">
+     <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Electricity</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr v-for="dam in damsPerElectricity">
+              <td>{{ dam.name }}</td>
+              <td>{{ dam.country }}</td>
+              <td>{{ dam.electricity }} MegaWatts</td>
+            </tr>
+        </tbody>
+     </table>
+</div>
+
+
+new Vue({
+	el:"#app",
+  data: {
+  	dams: [
+    	{name: 'Dam Nurek', country: 'Tajikistan', electricity: 32000},
+      {name: 'Dam Three Gorges', country: 'China', electricity: 22500},
+      {name: 'Dam Tarbela', country: 'Pakistan', electricity: 35000},
+      {name: 'Dam Guri', country: 'Venezuela', electricity: 10200},
+    ]
+  },
+  computed: {
+  	damsPerElectricity() {
+    	return this.dams.sort((d1, d2) => d2.electricity - d1.electricity);
+    }
+  }
+});

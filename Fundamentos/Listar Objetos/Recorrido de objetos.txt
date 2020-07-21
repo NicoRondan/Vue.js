@@ -1,0 +1,20 @@
+<div id="app">
+  <ul>
+    <li v-for="(sonido, nombre) in animales">
+      El {{nombre}} hace {{sonido}}
+    </li>
+  </ul>
+</div>
+
+
+new Vue({
+	el: '#app',
+  data: {
+  	animales: {
+    	perro: 'woof',
+    	gato: 'meow',
+    	pajaro: 'tweet'
+    }
+  	
+  }
+});

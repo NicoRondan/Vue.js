@@ -1,0 +1,15 @@
+<div id="app">
+   {{ 'hello world' | capitalize }}
+</div>
+
+
+Vue.filter('capitalize', function(string){
+	var firstLetter = string.charAt(0).toUpperCase();
+  var restLetters = string.slice(1, string.length);
+  return firstLetter + restLetters;
+});
+
+new Vue({
+	el: "#app",
+  
+});

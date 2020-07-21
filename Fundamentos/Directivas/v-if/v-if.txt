@@ -1,0 +1,19 @@
+<div id="app">
+  <div v-if="itsMorning">
+    Hello, I'm a Ghost! Booo!!
+  </div>
+  <div v-else>
+    Hello, I'm not a Ghost!!
+  </div>
+</div>
+
+new Vue({
+	el: '#app',
+  computed: {
+  itsMorning() {
+  	return new Date().getHours() < 7;
+  }
+  }
+});
+
+//v-if. condicional típico
