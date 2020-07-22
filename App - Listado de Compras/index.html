@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplies List</title>
+    <!-- BOOTSTRAP 4  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container p-4">
+        <div id="shopping-list">
+
+            <div class="header">
+                <h1>{{ header.toLocaleUpperCase() }}</h1>
+                <button v-if="state === 'default' " class="btn btn-primary" @click="changeState('edit')">Add</button>
+                <button v-else class="btn btn-cancel" @click="changeState('default')">Cancel</button>
+            </div>
+            
+            <div v-if="state === 'edit' ">
+                <input type="text" placeholder="Add new" v-model="newSupply" @keyup.enter="saveElement">
+                
+                <button class="btn btn-primary" @click="saveElement" :disabled="newSupply.length === 0">Save</button>
+            </div>
+
+            <ul>
+                <li v-for="supply in reverseList" :class="{strikethrough : supply.bought}" @click="changePurchaseState(supply)">{{ supply.supply }}</li>
+            </ul>
+
+            <p v-if="supplies.length === 0"> There are no Items in the List </p>
+
+        </div>
+    </div>
+    <!-- Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#shopping-list',
+            data: {
+                header: 'Supplies Shopping List',
+                newSupply: '',
+                state: 'default',
+                supplies: [
+                    {
+                        supply: '10 notebooks',
+                        bought: true
+                    },
+                    {
+                        supply: '15 pencils',
+                        bought: true
+                    },
+                    {
+                        supply: '5 colorboxes',
+                        bought: false
+                    }
+                ]
+            },
+            computed: {
+                reverseList: function() {
+                    return this.supplies.slice(0).reverse();
+                }
+            },
+            methods: {
+                saveElement: function() {
+                    this.supplies.push({
+                        supply: this.newSupply,
+                        bought: false
+                    });
+                    this.newSupply = '';
+                },
+                changeState: function(newState) {
+                    this.state = newState;
+                    this.newSupply = '';
+                },
+                changePurchaseState: function(supply) {
+                    supply.bought = !supply.bought
+                }
+            }
+        });
+    </script>
+
+    <!-- Bootstrap 4 scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

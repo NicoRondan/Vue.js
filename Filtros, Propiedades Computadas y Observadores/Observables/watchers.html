@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observable</title>
+</head>
+<body>
+    <div id='app'>
+        Grover is {{ isActive === 'active' ? 'active' : 'not active'}}
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isActive: 'active'
+            },
+            watch: {
+                isActive: function() {
+                    console.log('Change the value of state');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

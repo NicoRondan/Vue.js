@@ -1,0 +1,8 @@
+.strikethrough {
+    text-decoration: line-through;
+    color: #B8C2CC;
+}
+
+li {
+    cursor: pointer;
+}
